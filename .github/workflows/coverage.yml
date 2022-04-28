@@ -1,0 +1,45 @@
+name: Coverage Report
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  coverage-report:
+    if: ${{ !contains (github.repository, '/react-component-template')}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.pull_request.head.ref}}
+      - run: yarn
+      - id: previous_coverage_percentage
+        shell: bash -ex {0}
+        run: |
+          PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
+          echo "::set-output name=PERCENTAGE::$PERCENTAGE"
+      - run: yarn test:coverage
+      - id: coverage_percentage
+        shell: bash -ex {0}
+        run: |
+          PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
+          echo "::set-output name=PERCENTAGE::$PERCENTAGE"
+      - if: steps.previous_coverage_percentage.outputs.PERCENTAGE != steps.coverage_percentage.outputs.PERCENTAGE
+        run: yarn test:badges
+      - if: steps.previous_coverage_percentage.outputs.PERCENTAGE != steps.coverage_percentage.outputs.PERCENTAGE
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: '🏁 Generate coverage report and badges'
+          push_options: --force
+      - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👎 Code coverage is too low. Current coverage is ${{steps.coverage_percentage.outputs.PERCENTAGE}}%. Minimum required coverage is 80%.'
+            })
+      - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
+        run: exit 1

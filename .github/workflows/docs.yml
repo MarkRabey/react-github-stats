@@ -1,0 +1,23 @@
+name: Build and Deploy Docs
+on:
+  push:
+    paths: ['.storybook/**', 'src/**/*.stories.*']
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    if: ${{ !contains (github.repository, '/react-component-template')}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+      - name: 🔧 Install and Build
+        run: |
+          yarn
+          yarn build-storybook
+      - name: 🚀 Deploy
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn deploy-storybook -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

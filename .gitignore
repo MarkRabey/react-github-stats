@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build
+lib/
+
+# Testing
+coverage/**
+!coverage/*.svg
+!coverage/coverage-summary.json
+yalc.lock
+
+# Docs
+docs-build
+.env
+
+# OSX
+.DS_Store
