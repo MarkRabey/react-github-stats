@@ -36,7 +36,7 @@ This template creates the initial setup for a React Component Library that is co
 ![coverage-lines](./coverage/badge-lines.svg)
 ![coverage-statements](./coverage/badge-statements.svg)
 
-> 
+>
 
 ## Installation
 
@@ -55,10 +55,10 @@ npm install react-github-stats
 ## Usage
 
 ```jsx
-import {MyComponent} from 'react-github-stats';
+import {GitHubStats} from 'react-github-stats';
 
 const App = () => {
-  return <MyComponent />;
+  return <GitHubStats />;
 };
 
 export default App;

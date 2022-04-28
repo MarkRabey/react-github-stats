@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import MyComponent from '..';
+import GitHubStats from '..';
 
-describe('MyComponent', () => {
+describe('GitHubStats', () => {
   it('renders correctly', () => {
-    const result = renderer.create(<MyComponent />).toJSON();
+    const result = renderer.create(<GitHubStats />).toJSON();
     expect(result).toMatchSnapshot();
   });
 });

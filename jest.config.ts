@@ -5,6 +5,11 @@ import type {Config} from '@jest/types';
 export default async (): Promise<Config.InitialOptions> => {
   return {
     testEnvironment: 'jsdom',
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    modulePathIgnorePatterns: ['<rootDir>/docs-build', '<rootDir>/lib'],
+    moduleNameMapper: {
+      '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'babel-jest',
+    },
     coverageReporters: ['json-summary', 'text', 'text-summary'],
     coverageThreshold: {
       global: {
