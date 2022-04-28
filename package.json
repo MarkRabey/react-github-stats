@@ -1,12 +1,12 @@
 {
-  "name": "project_name",
+  "name": "react-github-stats",
   "version": "0.0.0",
-  "description": "project_description",
+  "description": "",
   "main": "lib/index.cjs.js",
   "module": "lib/index.exm.js",
-  "repository": "https://github.com/author_name/project_urlname/",
-  "homepage": "https://github.com/author_name/project_urlname/",
-  "author": "author_name",
+  "repository": "https://github.com/MarkRabey/react-github-stats/",
+  "homepage": "https://github.com/MarkRabey/react-github-stats/",
+  "author": "MarkRabey",
   "license": "MIT",
   "private": false,
   "publishConfig": {

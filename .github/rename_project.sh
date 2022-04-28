@@ -15,10 +15,10 @@ echo "Description: $description"
 
 echo "Renaming project..."
 
-original_author="author_name"
-original_name="project_name"
-original_urlname="project_urlname"
-original_description="project_description"
+original_author="MarkRabey"
+original_name="react-github-stats"
+original_urlname="react-github-stats"
+original_description=""
 
 for filename in $(git ls-files); do
   sed -i "s/$original_author/$author/g" $filename
@@ -28,6 +28,6 @@ for filename in $(git ls-files); do
   echo "Renamed $filename"
 done
 
-mv project_name $name
+mv react-github-stats $name
 
 rm -rf .github/template.yml

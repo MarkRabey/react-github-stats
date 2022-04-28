@@ -27,35 +27,35 @@ This template creates the initial setup for a React Component Library that is co
 
 ## <!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
 
-# project_name
+# react-github-stats
 
-[![npm](https://img.shields.io/npm/v/project_name)](https://www.npmjs.com/project_name)
-[![npm](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/author_name/project_name/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/v/react-github-stats)](https://www.npmjs.com/react-github-stats)
+[![npm](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/MarkRabey/react-github-stats/blob/main/LICENSE)
 
 ![coverage-functions](./coverage/badge-functions.svg)
 ![coverage-lines](./coverage/badge-lines.svg)
 ![coverage-statements](./coverage/badge-statements.svg)
 
-> project_description
+> 
 
 ## Installation
 
 With `yarn`:
 
 ```
-yarn add project_name
+yarn add react-github-stats
 ```
 
 With `npm`:
 
 ```
-npm install project_name
+npm install react-github-stats
 ```
 
 ## Usage
 
 ```jsx
-import {MyComponent} from 'project_name';
+import {MyComponent} from 'react-github-stats';
 
 const App = () => {
   return <MyComponent />;
