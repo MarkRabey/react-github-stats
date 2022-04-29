@@ -1,0 +1,26 @@
+$text-color: #6f7985;
+$text-size: 12px;
+$background-color: #f6f8fa;
+
+.container {
+  background-color: $background-color;
+  padding: 12px 0;
+}
+
+.avatar {
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 5px 10px 20px -10px rgba(0, 0, 0, 0.2);
+  perspective: 1000px;
+}
+
+.title {
+  // margin: 0 0 6px;
+  font-weight: 600;
+  font-size: $text-size * 1.25;
+  color: darken($text-color, 10%);
+}
+
+.text {
+  margin: 0;
+}

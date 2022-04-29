@@ -1,5 +1,14 @@
-$border-color: red;
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+$primary-color: #00a2ff;
+$text-color: #6f7985;
+$text-size: 12px;
 
 .container {
-  border: 1px solid $border-color;
+  background-color: #fff;
+  border: none;
+  padding: 15px;
+
+  font-family: 'Poppins', sans-serif;
+  color: $text-color;
+  font-size: $text-size;
 }

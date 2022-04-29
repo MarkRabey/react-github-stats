@@ -95,7 +95,10 @@
       "last 1 safari version"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "react-grid-system": "^8.1.4"
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "yarn lint:fix"
   }

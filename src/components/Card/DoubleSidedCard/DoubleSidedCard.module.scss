@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 300px;
+  border: none;
+  align-items: flex-start;
+}
+
+.focus-trigger:focus {
+  outline: 5px solid greenyellow;
+}
+
+.inner {
+  transform-style: preserve-3d;
+  transition: 0.5s linear 0.1s;
+  position: relative;
+  width: inherit;
+  height: inherit;
+}
+
+.hover-trigger:hover,
+.showBack {
+  transform: rotateY(180deg);
+}
+
+.content {
+  backface-visibility: hidden;
+  width: 100%;
+}
+
+.front {
+  transform: rotateY(0);
+}
+
+.back {
+  position: absolute;
+  transform: rotateY(180deg);
+  color: #2d2d2d;
+  top: 0;
+}
