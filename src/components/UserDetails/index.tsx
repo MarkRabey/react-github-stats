@@ -4,6 +4,7 @@ import {Repository} from '../../models/Repo';
 import {User} from '../../models/User';
 import Card from '../Card';
 import DoubleSidedCard from '../Card/DoubleSidedCard';
+import LanguageDetails from '../LanguageDetails';
 import LanguageSummary from '../LanguageSummary';
 import RepoCount from '../RepoCount';
 import UserSummary from '../UserSummary';
@@ -20,7 +21,10 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
   const [error, setError] = useState<any>(null);
   const [user, setUser] = useState<User | null>(null);
   const [userRepos, setUserRepos] = useState<Repository[]>([]);
-  const [userLanguages, setUserLanguages] = useState({});
+  const [userLanguages, setUserLanguages] = useState<{[key: string]: number}>(
+    {},
+  );
+  const [topLanguages, setTopLanguages] = useState<[string, number][]>([]);
 
   const getFetchOptions = useCallback((): RequestInit => {
     if (accessToken) {
@@ -106,6 +110,21 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
     }
   }, [user, userRepos.length, userLanguages, fetchUserData, fetchUserRepos]);
 
+  useEffect(() => {
+    if (Object.keys(userLanguages).length > 0) {
+      const sortedLanguages = Object.entries(userLanguages).sort(
+        (a, b) => a[1][1] - b[1][1],
+      );
+      const topLangs =
+        sortedLanguages.length >= 3
+          ? sortedLanguages.slice(0, 3)
+          : sortedLanguages;
+
+      setTopLanguages(topLangs);
+      console.log({topLangs});
+    }
+  }, [userLanguages]);
+
   return user ? (
     <DoubleSidedCard
       trigger="click"
@@ -121,7 +140,7 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
       }
       back={
         <Card>
-          <h2>BACK</h2>
+          <LanguageDetails topLanguages={topLanguages} />
         </Card>
       }
     />

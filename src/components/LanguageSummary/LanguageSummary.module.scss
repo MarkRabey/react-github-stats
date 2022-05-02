@@ -1,6 +1,7 @@
 @import '../../styles/abstract.scss';
 
 .language-summary {
+  flex: $global-flex;
   background: $c-primary-light;
   padding: $global-spacing-half;
 

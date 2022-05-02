@@ -26,7 +26,7 @@ const LanguageSummary: React.FC<Props> = ({languageCounts}) => {
   return (
     <div className={styles['language-summary']}>
       <header className={styles.header}>
-        <h3>Top Languages</h3>
+        <h3>Languages</h3>
       </header>
       <div className={styles.progress} data-tip={tooltip}>
         {Object.keys(languageCounts).map(language => {
@@ -48,7 +48,7 @@ const LanguageSummary: React.FC<Props> = ({languageCounts}) => {
           );
         })}
       </div>
-      <ReactTooltip place="top" type="dark" effect="float" />
+      <ReactTooltip place="top" type="dark" effect="solid" />
     </div>
   );
 };
