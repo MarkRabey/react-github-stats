@@ -4,6 +4,7 @@ import {Repository} from '../../models/Repo';
 import {User} from '../../models/User';
 import Card from '../Card';
 import DoubleSidedCard from '../Card/DoubleSidedCard';
+import LanguageSummary from '../LanguageSummary';
 import RepoCount from '../RepoCount';
 import UserSummary from '../UserSummary';
 
@@ -104,7 +105,6 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
       fetchUserRepos();
     }
   }, [user, userRepos.length, userLanguages, fetchUserData, fetchUserRepos]);
-  console.log({user});
 
   return user ? (
     <DoubleSidedCard
@@ -116,6 +116,7 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
             publicRepos={user.public_repos}
             publicGists={user.public_gists}
           />
+          <LanguageSummary languageCounts={userLanguages} />
         </Card>
       }
       back={

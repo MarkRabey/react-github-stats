@@ -13,6 +13,7 @@
 $c-primary: #00a2ff;
 $c-primary-dark: #6f7985;
 $c-primary-light: #f6f8fa;
+// Language Colors
 
 $c-selected: #00c6f3;
 $c-success: #1cff00;
@@ -50,6 +51,8 @@ $global-scale-factor-mobile: 1.125;
 
 /* Style/Animation Variables
    ========================================================================== */
-$global-border-radius: 6px;
+
+$global-box-shadow: 5px 10px 20px -10px rgba(0, 0, 0, 0.4);
+$global-border-radius: 3px;
 $animate-duration: 0.8s;
 $animate-transition: all 0.5s ease-in-out;
