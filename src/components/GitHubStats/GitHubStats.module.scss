@@ -1,14 +1,63 @@
+@import '../../styles/abstract.scss';
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 $primary-color: #00a2ff;
 $text-color: #6f7985;
 $text-size: 12px;
 
 .container {
+  /**
+    TYPOGRAPHY
+  */
+  a {
+    text-decoration: underline;
+    color: $c-primary;
+  }
+
+  b,
+  strong {
+    font-family: $ff-primary;
+    font-weight: $fw-bold;
+  }
+
+  ol,
+  ul {
+    padding-left: 20px;
+  }
+
+  small,
+  .text-small {
+    @include rhythm-desktop(-1, 0, 1);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .headline1,
+  .headline2,
+  .headline3,
+  .headline4,
+  .headline5,
+  .headline6 {
+    color: $c-primary;
+    font-family: $ff-headline;
+    font-weight: $fw-bold;
+    margin: 0;
+  }
+
   background-color: #fff;
   border: none;
   padding: 15px;
 
-  font-family: 'Poppins', sans-serif;
-  color: $text-color;
-  font-size: $text-size;
+  color: $c-primary-dark;
+  font-family: $ff-primary;
+  font-size: $global-font-size;
+  font-weight: $fw-regular;
+  line-height: $global-line-height;
+  height: 100%;
+  margin: 0;
+  width: 100%;
 }

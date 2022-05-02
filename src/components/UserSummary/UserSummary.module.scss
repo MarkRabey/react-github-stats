@@ -1,9 +1,9 @@
+@import '../../styles/abstract.scss';
 $text-color: #6f7985;
 $text-size: 12px;
-$background-color: #f6f8fa;
 
 .container {
-  background-color: $background-color;
+  background-color: $c-primary-light;
   padding: 12px 0;
 }
 
@@ -15,10 +15,7 @@ $background-color: #f6f8fa;
 }
 
 .title {
-  // margin: 0 0 6px;
-  font-weight: 600;
-  font-size: $text-size * 1.25;
-  color: darken($text-color, 10%);
+  font-size: $global-font-size * 1.25;
 }
 
 .text {

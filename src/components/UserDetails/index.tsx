@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Row, Col, Container} from 'react-grid-system';
 import {User} from '../../models/User';
 import Card from '../Card';
@@ -8,11 +8,103 @@ import UserSummary from '../UserSummary';
 import styles from './UserDetails.module.scss';
 
 interface Props {
-  user: User;
+  username: string;
+  accessToken?: string;
 }
 
-const UserDetails: React.FC<Props> = ({user}) => {
-  return (
+const UserDetails: React.FC<Props> = ({username, accessToken}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [userRepos, setUserRepos] = useState([]);
+  const [userLanguages, setUserLanguages] = useState({});
+
+  const getFetchOptions = useCallback((): RequestInit => {
+    if (accessToken) {
+      return {
+        method: 'GET',
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+          'User-Agent': `react-github-stats`,
+          Authorization: `token ${accessToken}`,
+        },
+      };
+    }
+
+    return {
+      method: 'GET',
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        'User-Agent': `react-github-stats`,
+      },
+    };
+  }, [accessToken]);
+
+  const fetchUserRepos = useCallback(async () => {
+    try {
+      await setIsLoading(true);
+      const response = await fetch(
+        `https://api.github.com/users/${username}/repos`,
+        getFetchOptions(),
+      );
+      if (response.status >= 400 && response.status < 600) {
+        await setIsLoading(false);
+        setError('Server Error');
+        return;
+      }
+      const languagesObj = {};
+      const data = await response.json();
+      data.forEach(repo => {
+        if (repo.language && repo.language !== null) {
+          if (languagesObj[repo.language]) {
+            languagesObj[repo.language] += 1;
+          } else {
+            languagesObj[repo.language] = 1;
+          }
+        }
+      });
+      await setUserRepos(data);
+      await setUserLanguages(languagesObj);
+      await setIsLoading(false);
+    } catch (e) {
+      console.log({error: e});
+    }
+  }, [username, getFetchOptions]);
+
+  const fetchUserData = useCallback(async () => {
+    try {
+      await setIsLoading(true);
+      const response = await fetch(
+        `https://api.github.com/users/${username}`,
+        getFetchOptions(),
+      );
+
+      if (response.status >= 400 && response.status < 600) {
+        await setIsLoading(false);
+        setError('Server Error');
+        return;
+      }
+
+      const userData = await response.json();
+      setUser(userData);
+      await setIsLoading(false);
+    } catch (e) {
+      console.log({error: e});
+    }
+  }, [username, getFetchOptions]);
+
+  useEffect(() => {
+    if (!user) {
+      fetchUserData();
+    }
+
+    if (userRepos.length === 0 || Object.keys(userLanguages).length === 0) {
+      fetchUserRepos();
+    }
+  }, [user, userRepos.length, userLanguages, fetchUserData, fetchUserRepos]);
+  console.log({user});
+
+  return user ? (
     <DoubleSidedCard
       trigger="click"
       front={
@@ -26,6 +118,8 @@ const UserDetails: React.FC<Props> = ({user}) => {
         </Card>
       }
     />
+  ) : (
+    <p>Loading...</p>
   );
 };
 
