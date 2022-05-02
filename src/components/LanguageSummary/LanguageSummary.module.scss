@@ -10,12 +10,12 @@
   }
 
   .progress {
+    position: relative;
     width: 100%;
     height: 8px;
-    // border: 1px solid $c-primary-light;
     border-radius: $global-border-radius;
     display: flex;
     box-shadow: $global-box-shadow;
-    overflow: hidden;
+    // overflow: hidden;
   }
 }

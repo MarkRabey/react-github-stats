@@ -97,7 +97,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "react-grid-system": "^8.1.4"
+    "react-grid-system": "^8.1.4",
+    "react-tooltip": "^4.2.21"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "yarn lint:fix"

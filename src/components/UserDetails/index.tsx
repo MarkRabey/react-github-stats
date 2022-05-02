@@ -112,11 +112,11 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
       front={
         <Card>
           <UserSummary user={user} />
+          <LanguageSummary languageCounts={userLanguages} />
           <RepoCount
             publicRepos={user.public_repos}
             publicGists={user.public_gists}
           />
-          <LanguageSummary languageCounts={userLanguages} />
         </Card>
       }
       back={

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import languages from '../../utils/languages';
 
@@ -10,6 +11,7 @@ interface Props {
 
 const LanguageSummary: React.FC<Props> = ({languageCounts}) => {
   const [totalCount, setTotalCount] = useState(0);
+  const [tooltip, setTooltip] = useState('');
 
   useEffect(() => {
     let count = 0;
@@ -26,17 +28,27 @@ const LanguageSummary: React.FC<Props> = ({languageCounts}) => {
       <header className={styles.header}>
         <h3>Top Languages</h3>
       </header>
-      <div className={styles.progress}>
-        {Object.keys(languageCounts).map(language => (
-          <div
-            key={language}
-            style={{
-              width: `${(languageCounts[language] / totalCount) * 100}%`,
-              backgroundColor: languages[language].color,
-            }}
-          />
-        ))}
+      <div className={styles.progress} data-tip={tooltip}>
+        {Object.keys(languageCounts).map(language => {
+          const percentage = `${Math.round(
+            (languageCounts[language] / totalCount) * 100,
+          )}%`;
+          return (
+            <div
+              key={language}
+              style={{
+                position: 'relative',
+                width: percentage,
+                height: '100%',
+                backgroundColor: languages[language].color,
+              }}
+              onMouseEnter={() => setTooltip(`${language} - ${percentage}`)}
+              onMouseLeave={() => setTooltip('')}
+            />
+          );
+        })}
       </div>
+      <ReactTooltip place="top" type="dark" effect="float" />
     </div>
   );
 };

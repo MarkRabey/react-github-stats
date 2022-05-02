@@ -21,8 +21,6 @@ const UserSummary: React.FC<Props> = ({user}) => {
     (Date.now() - created.valueOf()) / 1000 / 60 / 60 / 24 / 365,
   );
 
-  console.log({user});
-
   return (
     <Container>
       <Row className={styles.container} align="center">
