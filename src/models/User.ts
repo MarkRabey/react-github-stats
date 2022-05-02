@@ -25,8 +25,8 @@ export interface User {
   hireable?: any;
   bio?: string;
   twitter_username?: string;
-  public_repos?: number;
-  public_gists?: number;
+  public_repos: number;
+  public_gists: number;
   followers?: number;
   following?: number;
   created_at: Date;

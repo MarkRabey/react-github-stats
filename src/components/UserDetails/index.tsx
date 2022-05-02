@@ -1,8 +1,10 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Row, Col, Container} from 'react-grid-system';
+import {Repository} from '../../models/Repo';
 import {User} from '../../models/User';
 import Card from '../Card';
 import DoubleSidedCard from '../Card/DoubleSidedCard';
+import RepoCount from '../RepoCount';
 import UserSummary from '../UserSummary';
 
 import styles from './UserDetails.module.scss';
@@ -16,7 +18,7 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<any>(null);
   const [user, setUser] = useState<User | null>(null);
-  const [userRepos, setUserRepos] = useState([]);
+  const [userRepos, setUserRepos] = useState<Repository[]>([]);
   const [userLanguages, setUserLanguages] = useState({});
 
   const getFetchOptions = useCallback((): RequestInit => {
@@ -110,6 +112,10 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
       front={
         <Card>
           <UserSummary user={user} />
+          <RepoCount
+            publicRepos={user.public_repos}
+            publicGists={user.public_gists}
+          />
         </Card>
       }
       back={

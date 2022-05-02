@@ -1,0 +1,13 @@
+@import '../../styles/abstract.scss';
+
+.repo-count {
+  background: $c-primary;
+  display: flex;
+  justify-content: space-between;
+  padding: $global-spacing-half;
+
+  .count {
+    color: $c-primary-light;
+    font-size: $global-font-size * 1.25;
+  }
+}
