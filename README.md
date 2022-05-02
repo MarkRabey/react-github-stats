@@ -29,7 +29,7 @@ npm install react-github-stats
 import {GitHubStats} from 'react-github-stats';
 
 const App = () => {
-  return <GitHubStats />;
+  return <GitHubStats username="MarkRabey" accessToken={GITHUB_ACCESS_TOKEN} />;
 };
 
 export default App;
