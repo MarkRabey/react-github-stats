@@ -1,0 +1,14 @@
+@import '../../styles/abstract.scss';
+
+.user-stats {
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  &__row {
+    flex: $global-flex !important;
+  }
+}

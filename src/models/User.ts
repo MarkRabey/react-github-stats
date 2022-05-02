@@ -6,8 +6,8 @@ export interface User {
   gravatar_id?: string;
   url?: string;
   html_url?: string;
-  followers_url?: string;
-  following_url?: string;
+  followers_url: string;
+  following_url: string;
   gists_url?: string;
   starred_url?: string;
   subscriptions_url?: string;
@@ -27,8 +27,8 @@ export interface User {
   twitter_username?: string;
   public_repos: number;
   public_gists: number;
-  followers?: number;
-  following?: number;
+  followers: number;
+  following: number;
   created_at: Date;
   updated_at: Date;
 }

@@ -7,6 +7,7 @@ import DoubleSidedCard from '../Card/DoubleSidedCard';
 import LanguageDetails from '../LanguageDetails';
 import LanguageSummary from '../LanguageSummary';
 import RepoCount from '../RepoCount';
+import UserStats from '../UserStats';
 import UserSummary from '../UserSummary';
 
 import styles from './UserDetails.module.scss';
@@ -141,6 +142,7 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
       back={
         <Card>
           <LanguageDetails topLanguages={topLanguages} />
+          <UserStats user={user} userRepos={userRepos} />
         </Card>
       }
     />
