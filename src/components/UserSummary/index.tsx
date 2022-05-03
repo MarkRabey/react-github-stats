@@ -22,28 +22,26 @@ const UserSummary: React.FC<Props> = ({user}) => {
   );
 
   return (
-    <Container>
-      <Row className={styles.container} align="center">
-        {user.login && (
-          <Col>
-            <h2 className={styles.title}>@{user.login}</h2>
-            {company}
-            <p className={styles.text}>
-              {totalYears} {pluralizer(totalYears, 'Year')} of Membership
-            </p>
-          </Col>
-        )}
-        {user.avatar_url && (
-          <Col xs={6} sm={4}>
-            <img
-              className={styles.avatar}
-              // style={{backgroundImage: `url(${user.avatar_url})`}}
-              src={user.avatar_url}
-            />
-          </Col>
-        )}
-      </Row>
-    </Container>
+    <Row className={styles.container} align="center">
+      {user.login && (
+        <Col>
+          <h2 className={styles.title}>@{user.login}</h2>
+          {company}
+          <p className={styles.text}>
+            {totalYears} {pluralizer(totalYears, 'Year')} of Membership
+          </p>
+        </Col>
+      )}
+      {user.avatar_url && (
+        <Col xs={6} sm={4}>
+          <img
+            className={styles.avatar}
+            // style={{backgroundImage: `url(${user.avatar_url})`}}
+            src={user.avatar_url}
+          />
+        </Col>
+      )}
+    </Row>
   );
 };
 

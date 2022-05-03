@@ -1,8 +1,14 @@
+@import '../../../styles/abstract.scss';
+
 .container {
   display: flex;
   width: 300px;
   border: none;
   align-items: flex-start;
+}
+
+.footer {
+  flex: $global-flex;
 }
 
 .focus-trigger:focus {

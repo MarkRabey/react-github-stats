@@ -1,5 +1,7 @@
 import React from 'react';
+import {AiOutlineBug, AiOutlineEye, AiOutlineStar} from 'react-icons/ai';
 import {Row, Col, Container} from 'react-grid-system';
+
 import {Repository} from '../../models/Repo';
 import {User} from '../../models/User';
 import pluralizer from '../../utils/pluralizer';
@@ -17,32 +19,79 @@ const UserStats: React.FC<Props> = ({user, userRepos}) => {
   const stargazersCount = sum(userRepos, 'stargazers_count');
   const openIssuesCount = sum(userRepos, 'open_issues_count');
   return (
-    <Container fluid className={styles['user-stats']}>
-      <Row className={styles['user-stats__row']}>
-        <Col>
-          <strong>{openIssuesCount}</strong>{' '}
-          {pluralizer(parseInt(openIssuesCount), 'open issue')}
-        </Col>
-        <Col>
-          <strong>{watchersCount}</strong>{' '}
-          {pluralizer(parseInt(watchersCount), 'watcher')}
-        </Col>
-      </Row>
-      <Row className={styles['user-stats__row']}>
-        <Col>
-          Starred <strong>{stargazersCount}</strong>{' '}
-          {pluralizer(user.followers, 'time')}
-        </Col>
-        <Col>
-          Followed by <strong>{user.followers}</strong>{' '}
-          {pluralizer(user.followers, 'member')}
-        </Col>
-        <Col>
-          Following by <strong>{user.following}</strong>{' '}
-          {pluralizer(user.followers, 'member')}
-        </Col>
-      </Row>
-    </Container>
+    <Row className={styles['user-stats']}>
+      <Col>
+        <Row className={styles['user-stats__row']} align="stretch">
+          <Col>
+            <Row>
+              <Col>
+                <AiOutlineBug className={styles['user-stats__icon']} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <strong>{openIssuesCount}</strong>{' '}
+                {pluralizer(parseInt(openIssuesCount), 'open issue')}
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <AiOutlineEye className={styles['user-stats__icon']} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <strong>{watchersCount}</strong>{' '}
+                {pluralizer(parseInt(watchersCount), 'watcher')}
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row className={styles['user-stats__row']} style={{paddingTop: 6}}>
+          <Col>
+            <Row>
+              <Col>
+                <AiOutlineStar className={styles['user-stats__icon']} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                Starred <strong>{stargazersCount}</strong>{' '}
+                {pluralizer(user.followers, 'time')}
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <AiOutlineStar className={styles['user-stats__icon']} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                Followed by <strong>{user.followers}</strong>{' '}
+                {pluralizer(user.followers, 'member')}
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row>
+              <Col>
+                <AiOutlineStar className={styles['user-stats__icon']} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                Following by <strong>{user.following}</strong>{' '}
+                {pluralizer(user.followers, 'member')}
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 };
 

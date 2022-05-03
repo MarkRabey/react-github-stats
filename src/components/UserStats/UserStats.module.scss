@@ -1,14 +1,24 @@
 @import '../../styles/abstract.scss';
 
 .user-stats {
-  width: 100%;
-  text-align: center;
+  padding: $global-spacing-half 0;
+  // width: 100%;
+  // text-align: center;
 
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+  // display: flex;
+  // flex-flow: row wrap;
+  // align-items: center;
 
   &__row {
-    flex: $global-flex !important;
+    // flex: $global-flex !important;
+    text-align: center;
+    &:not(:last-of-type) {
+      // margin-bottom: $global-spacing-half;
+    }
+  }
+
+  &__icon {
+    font-size: 2em;
+    color: $c-primary-dark;
   }
 }

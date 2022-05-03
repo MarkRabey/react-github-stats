@@ -2,10 +2,11 @@
 
 .repo-count {
   background: $c-primary;
-  display: flex;
-  justify-content: space-between;
-  padding: $global-spacing-half;
-  flex: $global-flex;
+  // display: flex;
+  // justify-content: space-between;
+  padding: $global-spacing-half 0;
+  // flex: $global-flex;
+  text-align: center;
 
   .count {
     color: $c-primary-light;

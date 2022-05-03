@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Row, Col, Container} from 'react-grid-system';
 import ReactTooltip from 'react-tooltip';
 
 import languages from '../../utils/languages';
@@ -24,7 +25,7 @@ const LanguageSummary: React.FC<Props> = ({languageCounts}) => {
   }, [languageCounts]);
 
   return (
-    <div className={styles['language-summary']}>
+    <Row className={styles['language-summary']} direction="column">
       <header className={styles.header}>
         <h3>Languages</h3>
       </header>
@@ -48,8 +49,8 @@ const LanguageSummary: React.FC<Props> = ({languageCounts}) => {
           );
         })}
       </div>
-      <ReactTooltip place="top" type="dark" effect="solid" />
-    </div>
+      <ReactTooltip type="dark" effect="solid" />
+    </Row>
   );
 };
 

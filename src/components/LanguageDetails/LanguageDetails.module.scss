@@ -2,8 +2,7 @@
 
 .language-details {
   background: $c-primary-light;
-  padding: $global-spacing-half;
-  flex: $global-flex;
+  padding: $global-spacing-half 0;
 
   &__header {
     text-align: center;
@@ -12,14 +11,15 @@
   }
 
   &__languages {
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
+    // display: flex;
+    // justify-content: space-between;
   }
 
   &__language-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
   }
 
   &__language {

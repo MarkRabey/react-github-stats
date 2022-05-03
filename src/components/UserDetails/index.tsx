@@ -1,5 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Row, Col, Container} from 'react-grid-system';
+import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
+
 import {Repository} from '../../models/Repo';
 import {User} from '../../models/User';
 import Card from '../Card';
@@ -18,6 +20,7 @@ interface Props {
 }
 
 const UserDetails: React.FC<Props> = ({username, accessToken}) => {
+  const [showBack, setShowBack] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<any>(null);
   const [user, setUser] = useState<User | null>(null);
@@ -126,9 +129,19 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
     }
   }, [userLanguages]);
 
+  const CardToggle = () => (
+    <Row
+      className={styles['card-toggle']}
+      justify="end"
+      onClick={() => setShowBack(!showBack)}
+    >
+      <Col>{showBack ? <AiOutlineArrowLeft /> : <AiOutlineArrowRight />}</Col>
+    </Row>
+  );
+
   return user ? (
     <DoubleSidedCard
-      trigger="click"
+      showBack={showBack}
       front={
         <Card>
           <UserSummary user={user} />
@@ -137,12 +150,14 @@ const UserDetails: React.FC<Props> = ({username, accessToken}) => {
             publicRepos={user.public_repos}
             publicGists={user.public_gists}
           />
+          <CardToggle />
         </Card>
       }
       back={
         <Card>
           <LanguageDetails topLanguages={topLanguages} />
           <UserStats user={user} userRepos={userRepos} />
+          <CardToggle />
         </Card>
       }
     />

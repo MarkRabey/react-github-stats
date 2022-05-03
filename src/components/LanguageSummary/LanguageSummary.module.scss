@@ -1,7 +1,7 @@
 @import '../../styles/abstract.scss';
 
 .language-summary {
-  flex: $global-flex;
+  // flex: $global-flex;
   background: $c-primary-light;
   padding: $global-spacing-half;
 
@@ -17,6 +17,6 @@
     border-radius: $global-border-radius;
     display: flex;
     box-shadow: $global-box-shadow;
-    // overflow: hidden;
+    overflow: hidden;
   }
 }

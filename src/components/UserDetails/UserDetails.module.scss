@@ -1,1 +1,11 @@
+@import '../../styles/abstract.scss';
 
+.user-details {
+}
+
+.card-toggle {
+  background: $c-primary;
+  color: $c-primary-light;
+  cursor: pointer;
+  padding: $global-spacing-half 0;
+}
